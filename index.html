@@ -162,14 +162,24 @@ section h2 { font-size: clamp(28px, 4.5vw, 48px); margin-bottom: 32px; }
     padding: 14px 16px; display: flex; align-items: center; gap: 12px;
     overflow-x: auto; border-right: none; border-bottom: 1px solid rgba(255,255,255,.05);
     white-space: nowrap;
+    z-index: 200; /* TOC acima dos botões */
   }
   .toc-brand, .toc-name { display: none; }
   .toc ul { display: flex; gap: 6px; }
   .toc li { margin: 0; }
   .toc-logo { display:none; }
   .content { margin-left: 0; padding: 40px 24px 80px; max-width: 100%; }
-  .print-btn { right: 20px; top: 66px; }
-  .fs-btn { top: 20px; }
+
+  /* Botões movidos para não colidir com a TOC sticky */
+  .fs-btn, .print-btn {
+    position: fixed;
+    top: auto;
+    bottom: 20px;
+    z-index: 150;
+    padding: 10px 14px;
+  }
+  .fs-btn { right: 16px; }
+  .print-btn { right: 16px; bottom: 68px; }
 }
 @media (max-width: 700px) {
   #hero h1 { font-size: clamp(26px, 8vw, 38px); }
@@ -184,7 +194,10 @@ section h2 { font-size: clamp(28px, 4.5vw, 48px); margin-bottom: 32px; }
   .photo-ring .ring:nth-child(2) { width: 200px; height: 200px; }
   .photo-ring .ring:nth-child(3) { width: 224px; height: 224px; }
   .photo { width: 160px; height: 160px; }
-  .fs-btn, .print-btn { font-size: 10px; padding: 9px 12px; }
+  .fs-btn, .print-btn {
+    font-size: 10px;
+    padding: 9px 12px;
+  }
   .fs-btn span, .print-btn span { display: none; }
   .card, .cp { padding: 22px 18px; }
   .case-card .case-metric { font-size: 38px; }
