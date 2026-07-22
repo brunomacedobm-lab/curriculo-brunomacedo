@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bruno Cardoso de Macedo — Professor de Artes, Teatro e Educação</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --graf-dark: #0D0D0F;
+  --graf-mid: #1C1C1F;
+  --silver: #C7CBD1;
+  --silver-dim: #8A8F98;
+  --steel: #4A4E57;
+  --white: #F5F5F7;
+}
+* {margin:0; padding:0; box-sizing:border-box}
+body {
+  background: var(--graf-dark);
+  font-family: 'Inter', sans-serif;
+  color: var(--silver-dim);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed; inset: -50% 0 0 -50%;
+  width: 200%; height: 200%;
+  z-index: -2; pointer-events: none;
+  background-image: url('https://i.imgur.com/BOoE3wB.png');
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-size: 700px;
+  opacity: 0.025;
+  animation: bgScroll 90s linear infinite;
+}
+@keyframes bgScroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 1400px 1400px; }
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  opacity: .25;
+  background-image: radial-gradient(rgba(255,255,255,.05) .8px, transparent .8px);
+  background-size: 24px 24px;
+}
+h1,h2,h3 { color: var(--white); }
+h1 { font-weight: 900; line-height: 1.08; }
+h2 { font-weight: 800; line-height: 1.12; }
+h3 { font-weight: 700; }
+.gt {
+  background: linear-gradient(135deg, var(--white), var(--silver), var(--steel));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+.gl { width:72px; height:4px; border-radius:2px; background:linear-gradient(90deg,var(--silver),var(--steel)); margin-bottom:22px; }
+.gl.ce { margin:0 auto 22px; }
+.progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 1000;
+  background: linear-gradient(90deg, var(--silver), var(--white), var(--silver));
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+  transition: width .2s ease;
+}
+.toc {
+  position: fixed; left: 0; top: 0; bottom: 0; width: 240px;
+  padding: 32px 24px 24px;
+  background: rgba(13,13,15,.7);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(255,255,255,.05);
+  z-index: 100; overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.08) transparent;
+}
+.toc::-webkit-scrollbar { width: 4px; }
+.toc::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+.toc-logo {
+  width: 52px; height: 52px; border-radius: 12px;
+  margin-bottom: 16px; object-fit: cover;
+  box-shadow: 0 8px 20px rgba(74,78,87,.15);
+  filter: grayscale(0.3);
+}
+.toc-brand { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--steel); margin-bottom: 6px; }
+.toc-name { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 28px; letter-spacing: -.01em; }
+.toc ul { list-style: none; }
+.toc li { margin-bottom: 8px; }
+.toc a { display: block; padding: 8px 14px; border-radius: 10px; color: var(--silver-dim); font-size: 14px; font-weight: 500; text-decoration: none; transition: all .3s ease; border-left: 2px solid transparent; }
+.toc a:hover { color: var(--white); background: rgba(255,255,255,.03); transform: translateX(2px); }
+.toc a.active { color: var(--white); background: rgba(199,203,209,.08); border-left-color: var(--silver); }
+@media (max-width: 900px) {
+  .toc { position: sticky; top: 0; left: auto; width: 100%; height: auto; padding: 16px 20px; display: flex; align-items: center; gap: 16px; overflow-x: auto; border-right: none; border-bottom: 1px solid rgba(255,255,255,.05); }
+  .toc ul { display: flex; gap: 6px; }
+  .toc li { margin: 0; }
+  .toc-logo { display:none; }
+}
+.content { margin-left: 240px; padding: 80px 64px 120px; max-width: 1100px; }
+@media(max-width: 900px) { .content { margin-left: 0; padding: 40px 24px; } }
+section { margin-bottom: 100px; scroll-margin-top: 40px; }
+section h2 { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 32px; }
+#hero { min-height: 85vh; display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 40px 0; position: relative; }
+#hero h1 { font-size: clamp(32px, 4.6vw, 56px); margin-bottom: 20px; white-space: nowrap; }
+@media (max-width: 700px) { #hero h1 { white-space: normal; font-size: clamp(28px, 7vw, 40px); } }
+.hero-title { font-size: clamp(18px, 2.2vw, 24px); color: var(--silver); margin-bottom: 16px; font-weight: 500; }
+.hero-tagline { font-size: clamp(15px, 1.6vw, 19px); max-width: 650px; margin: 0 auto 24px; line-height: 1.5; color: var(--steel); }
+.hero-loc { font-size: 14px; color: var(--steel); letter-spacing: .05em; margin-top: 16px; }
+.photo-ring { position: relative; width: 250px; height: 250px; margin: 0 auto 32px; display: flex; align-items: center; justify-content: center; }
+.photo-ring .ring { position: absolute; border-radius: 50%; border: 1px solid rgba(199,203,209,.18); animation: pulse 5s ease-in-out infinite; }
+.photo-ring .ring:nth-child(1) { width: 220px; height: 220px; }
+.photo-ring .ring:nth-child(2) { width: 250px; height: 250px; animation-delay: .6s; border-color: rgba(138,143,152,.16); }
+.photo-ring .ring:nth-child(3) { width: 280px; height: 280px; animation-delay: 1.2s; }
+@keyframes pulse { 0%, 100% { opacity: .3; transform: scale(1) } 50% { opacity: .7; transform: scale(1.04) } }
+.photo { width: 200px; height: 200px; border-radius: 50%; overflow: hidden; position: relative; z-index: 2; box-shadow: 0 20px 50px rgba(0,0,0,.5), 0 0 60px rgba(199,203,209,.18); background: var(--graf-mid); display: flex; align-items: center; justify-content: center; }
+.photo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); filter: grayscale(.15) contrast(1.05) brightness(1.05); transition: filter .6s ease, transform .6s ease; }
+.photo-ring:hover .photo img { filter: none; transform: scale(1.14); }
+.badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; border-radius: 999px; background: rgba(199,203,209,.06); border: 1px solid rgba(199,203,209,.18); font-size: 13px; font-weight: 600; color: var(--silver); letter-spacing: .05em; text-transform: uppercase; }
+.manifesto { padding: 60px 0; text-align: center; }
+.manifesto .quote { position: relative; max-width: 780px; margin: 0 auto; padding: 50px; }
+.manifesto .quote::before { content: '"'; position: absolute; top: -20px; left: 20px; font-size: 150px; font-weight: 900; line-height: 1; background: linear-gradient(135deg, var(--silver), var(--steel)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: .5; }
+.manifesto .quote p { font-size: clamp(19px,2.3vw,25px); font-weight: 500; color: var(--white); line-height: 1.45; font-style: italic; position: relative; z-index: 1; letter-spacing: -.01em; }
+.manifesto .quote-attr { margin-top: 24px; font-size: 14px; color: var(--steel); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+.card,.cp { background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.06); border-radius: 22px; box-shadow: 0 16px 48px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.03); padding: 30px 28px; backdrop-filter: blur(8px); transition: transform .5s cubic-bezier(.22,1,.36,1), border-color .4s ease, box-shadow .4s ease, background .4s ease; position: relative; overflow: hidden; }
+.card:hover { border-color: rgba(199,203,209,.3); transform: translateY(-6px) scale(1.01); box-shadow: 0 32px 70px rgba(0,0,0,.6), 0 0 40px rgba(199,203,209,.08); background: rgba(255,255,255,.04); }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 22px; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 20px; }
+.case-card { padding: 30px 26px; display: flex; flex-direction: column; gap: 14px; }
+.case-card .case-metric { font-size: 46px; font-weight: 900; letter-spacing: -.03em; line-height: 1; background: linear-gradient(135deg, var(--white), var(--silver), var(--steel)); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; transition: background-position .8s ease, transform .4s cubic-bezier(.22,1,.36,1); }
+.case-card:hover .case-metric { background-position: 200% center; transform: scale(1.05); }
+.case-card .case-title { font-size: 17px; font-weight: 700; color: var(--white); }
+.case-card .case-ctx { font-size: 14px; color: var(--silver-dim); line-height: 1.5; }
+.tl { position: relative; padding-left: 40px; }
+.tl::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--silver) 0%, var(--steel) 50%, var(--silver-dim) 100%); opacity: .3; }
+.tl-item { position: relative; margin-bottom: 36px; padding-bottom: 8px; }
+.tl-item::before { content: ''; position: absolute; left: -34px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--silver); box-shadow: 0 0 14px rgba(199,203,209,.5), 0 0 0 4px var(--graf-dark); }
+.tl-item .tl-period { font-size: 12px; font-weight: 700; color: var(--steel); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+.tl-item .tl-role { font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.tl-item .tl-company { font-size: 14px; color: var(--silver); font-weight: 600; margin-bottom: 12px; }
+.tl-item p { font-size: 14px; color: var(--silver-dim); }
+.pill { display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); color: var(--silver-dim); font-size: 13px; font-weight: 500; margin: 4px 6px 4px 0; transition: all .3s ease; }
+.pill:hover { background: rgba(199,203,209,.08); border-color: rgba(199,203,209,.25); color: var(--white); }
+.pill.highlight { background: rgba(199,203,209,.08); border-color: rgba(199,203,209,.25); color: var(--silver); }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 16px; }
+.contact-card { padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; min-width: 0; transition: transform .5s cubic-bezier(.22,1,.36,1), border-color .4s ease, box-shadow .4s ease, background .4s ease; }
+.contact-card:hover { border-color: rgba(199,203,209,.35); transform: translateY(-4px) scale(1.02); box-shadow: 0 16px 40px rgba(0,0,0,.4); background: rgba(199,203,209,.04); }
+.contact-card .ct-lbl { font-size: 11px; color: var(--steel); letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
+.contact-card .ct-val { font-size: 14px; color: var(--white); font-weight: 600; overflow-wrap: anywhere; }
+.contact-card .ct-val a { color: var(--white); }
+.contact-card .ct-val a:hover { color: var(--silver); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(35px) } to { opacity: 1; transform: translateY(0) } }
+@keyframes fadeScale { from { opacity: 0; transform: scale(.92) } to { opacity: 1; transform: scale(1) } }
+.au { opacity: 0; animation: fadeUp .8s ease both; }
+.as { opacity: 0; animation: fadeScale .8s ease both; }
+.d1 { animation-delay: .1s } .d2 { animation-delay: .22s } .d3 { animation-delay: .34s } .d4 { animation-delay: .46s }
+.fs-btn, .print-btn { position: fixed; z-index: 999; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); color: var(--steel); padding: 12px 18px; border-radius: 12px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all .3s ease; backdrop-filter: blur(6px); letter-spacing: .04em; text-transform: uppercase; }
+.fs-btn { top: 20px; right: 20px; }
+.print-btn { top: 20px; right: 150px; }
+.fs-btn:hover, .print-btn:hover { background: rgba(255,255,255,.08); color: var(--white); border-color: rgba(199,203,209,.3); }
+@media print {
+  body::before, body::after { display: none; }
+  .toc, .fs-btn, .print-btn, .progress { display: none; }
+  .content { margin-left: 0; padding: 24px; max-width: 100%; }
+  section { margin-bottom: 40px; page-break-inside: avoid; }
+  .card, .cp { page-break-inside: avoid; break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+
+<aside class="toc">
+  <img src="https://i.imgur.com/BOoE3wB.png" alt="Logo" class="toc-logo" />
+  <div class="toc-brand">Currículo</div>
+  <div class="toc-name">Bruno Macedo</div>
+  <ul>
+    <li><a href="#hero">Início</a></li>
+    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#cases">Destaques</a></li>
+    <li><a href="#trajetoria">Trajetória</a></li>
+    <li><a href="#competencias">Competências</a></li>
+    <li><a href="#formacao">Formação</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
+    <li><a href="#pessoal">Pessoal</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</aside>
+
+<main class="content">
+
+<section id="hero">
+  <div class="photo-ring as">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="photo">
+      <img src="https://i.imgur.com/BOoE3wB.png" alt="Bruno Cardoso de Macedo">
+    </div>
+  </div>
+  <div class="badge au">Educação · Artes Cênicas · Tecnologia</div>
+  <h1 class="au d1"><span class="gt">Bruno</span> Cardoso de <span class="gt">Macedo</span></h1>
+  <div class="hero-title au d2">Professor de Artes, Teatro e Educação | Arte-educador</div>
+  <p class="hero-tagline au d3">16+ anos formando pessoas através da arte, unindo psicopedagogia, tecnologia educacional e inteligência artificial à prática pedagógica.</p>
+  <div class="hero-loc au d4">Vargem Pequena, Rio de Janeiro, RJ</div>
+</section>
+
+<section id="manifesto" class="manifesto">
+  <div class="quote as">
+    <p>Temos a arte para não morrer ou enlouquecer perante a verdade. Somente a arte pode transfigurar a desordem do mundo em beleza e fazer aceitável tudo aquilo que há de problemático e terrível na vida.</p>
+    <div class="quote-attr">— Nietzsche</div>
+  </div>
+  <div class="quote as d2" style="margin-top:40px">
+    <p>A tecnologia é apenas uma ferramenta; é o professor, com criatividade e propósito, que a transforma em ponte para o futuro.</p>
+    <div class="quote-attr">— Seymour Papert</div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="gl"></div>
+  <h2 class="au">Destaques da <span class="gt">trajetória</span></h2>
+  <div class="grid2">
+    <div class="cp case-card au">
+      <div class="case-metric">500+</div>
+      <div class="case-title">Artistas profissionalizados</div>
+      <p class="case-ctx">Formação de mais de 500 alunos em Interpretação Cênica na Nova Escola de Teatro (RJ), muitos com atuações relevantes no cenário artístico nacional.</p>
+    </div>
+    <div class="cp case-card au d1">
+      <div class="case-metric">3</div>
+      <div class="case-title">Unidades simultâneas</div>
+      <p class="case-ctx">Atuação como professor de Teatro e Artes em três unidades da rede Legacy School (Ilha Pura, Campo Grande e Barra), em ambiente bilíngue e intercultural.</p>
+    </div>
+    <div class="cp case-card au d2">
+      <div class="case-metric">EaD</div>
+      <div class="case-title">Coordenação de Polos — CECIERJ</div>
+      <p class="case-ctx">Coordenação pedagógico-administrativa de Polos de Educação a Distância no Estado do RJ, com promoção à Vice-Presidência para estudo estratégico apresentado ao Conselho Superior.</p>
+    </div>
+    <div class="cp case-card au d3">
+      <div class="case-metric">16+</div>
+      <div class="case-title">Anos em educação</div>
+      <p class="case-ctx">Mais de 16 anos em educação básica e profissionalizante e 26 anos como ator e diretor teatral, unindo arte, pedagogia e gestão.</p>
+    </div>
+  </div>
+</section>
+
+<section id="trajetoria">
+  <div class="gl"></div>
+  <h2 class="au">Trajetória <span class="gt">Profissional</span></h2>
+  <div class="tl">
+    <div class="tl-item au">
+      <div class="tl-period">Março 2022 – Presente</div>
+      <div class="tl-role">Professor de Teatro e Artes</div>
+      <div class="tl-company">Legacy School — Unidades Ilha Pura, Campo Grande e Barra</div>
+      <p>Leciona Teatro e Artes Visuais em ambiente intercultural, produzindo e dirigindo apresentações de grande porte, com planejamento pedagógico anual e coordenação geral das disciplinas.</p>
+    </div>
+    <div class="tl-item au">
+      <div class="tl-period">Março 2022 – Dezembro 2024</div>
+      <div class="tl-role">Professor de Teatro</div>
+      <div class="tl-company">Instituto Nossa Senhora da Piedade (INSP) — Jacarepaguá</div>
+      <p>Ministrou aulas de Teatro para curso integral, desenvolvendo projetos artísticos no planejamento pedagógico institucional.</p>
+    </div>
+    <div class="tl-item au">
+      <div class="tl-period">Janeiro 2011 – Março 2024</div>
+      <div class="tl-role">Professor de Interpretação Cênica</div>
+      <div class="tl-company">Nova Escola de Teatro — Rio de Janeiro</div>
+      <p>Ministrou Leitura Dramatizada, Improvisação e Interpretação Cênica; coordenou espetáculos de encerramento e formou mais de 500 artistas.</p>
+    </div>
+    <div class="tl-item au">
+      <div class="tl-period">Janeiro 2021 – Janeiro 2022</div>
+      <div class="tl-role">Consultor Junior</div>
+      <div class="tl-company">Fundação CECIERJ — órgão vinculado à SECTI</div>
+      <p>Coordenou Polos EaD estaduais; promovido à Vice-Presidência para conduzir estudo "Análise de Indicadores Acadêmicos", apresentado à Presidência e Reitores das IES consorciadas.</p>
+    </div>
+    <div class="tl-item au">
+      <div class="tl-period">Fevereiro 2021 – Junho 2021</div>
+      <div class="tl-role">Produtor de Conteúdo</div>
+      <div class="tl-company">Agência de Publicidade TORIE</div>
+      <p>Produziu conteúdo digital e estratégias de marketing e redes sociais para clientes na Barra da Tijuca.</p>
+    </div>
+    <div class="tl-item au">
+      <div class="tl-period">Maio 2015 – Maio 2020</div>
+      <div class="tl-role">Sócio / Consultor / Gestor</div>
+      <div class="tl-company">Natural Premium BR</div>
+      <p>Gestão de pessoas, estoque e administrativa; representação comercial da Nutriscience World Nutrition no RJ.</p>
+    </div>
+  </div>
+</section>
+
+<section id="competencias">
+  <div class="gl"></div>
+ <h2 class="au">Áreas de Atuação e<br>Competências-chave</h2>
+  <div class="card au">
+    <span class="pill highlight">Docência</span><span class="pill">Educação Básica</span><span class="pill">Educação Infantil</span><span class="pill">Ensino Fundamental</span><span class="pill">Ensino Médio</span><span class="pill">Educação Profissionalizante</span><span class="pill">Arte-educação</span><span class="pill">Educação Artística</span><span class="pill">Artes Visuais</span><span class="pill">Teatro</span><span class="pill">Interpretação Cênica</span><span class="pill">Direção Teatral</span><span class="pill">Produção Cultural</span><span class="pill">Planejamento Pedagógico</span><span class="pill">Planejamento de Aulas</span><span class="pill">BNCC</span><span class="pill">Metodologias Ativas</span><span class="pill">Ensino Híbrido</span><span class="pill">Educação Bilíngue</span><span class="pill">Tecnologia Educacional</span><span class="pill">Tecnologias Digitais na Educação</span><span class="pill highlight">EdTech</span><span class="pill highlight">Inteligência Artificial</span><span class="pill highlight">IA aplicada à Educação</span><span class="pill highlight">Ferramentas de IA Generativa</span><span class="pill">Ensino a Distância (EaD)</span><span class="pill">Psicopedagogia</span><span class="pill">Psicologia da Aprendizagem</span><span class="pill">Desenvolvimento Socioemocional</span><span class="pill">Inclusão Escolar</span><span class="pill">Ciência de Dados</span><span class="pill">Análise de Dados</span><span class="pill">Power BI</span><span class="pill">Design Gráfico</span><span class="pill highlight">Canva</span><span class="pill">Gestão Pedagógica</span><span class="pill">Gestão de Projetos</span><span class="pill">Gestão de Pessoas</span><span class="pill">Gestão Administrativa</span><span class="pill">Gestão de Estoque</span><span class="pill">Liderança de Equipe</span><span class="pill">Coordenação Pedagógica</span><span class="pill">Comunicação</span><span class="pill">Oratória</span><span class="pill">Storytelling</span><span class="pill">Copywriting</span><span class="pill">Trabalho em Equipe</span><span class="pill">Criatividade</span><span class="pill">Dinâmica de Grupo</span><span class="pill">Inglês Intermediário</span><span class="pill">Pacote Office</span><span class="pill">Google Workspace</span><span class="pill">Trello</span><span class="pill">Slack</span><span class="pill">Zoom</span>
+  </div>
+</section>
+
+<section id="formacao">
+  <div class="gl"></div>
+  <h2 class="au">Formação <span class="gt">Acadêmica</span></h2>
+  <div class="grid3">
+    <div class="card au d1"><h3>Artes Visuais</h3><p>Especialização — FACUMINAS, em andamento</p></div>
+    <div class="card au d2"><h3>Tecnologias Digitais para Sala de Aula</h3><p>Especialização — FACUMINAS, em andamento</p></div>
+    <div class="card au"><h3>Psicopedagogia</h3><p>Especialização — FAVENI, concluída em 2026</p></div>
+    <div class="card au"><h3>Ciência de Dados</h3><p>Tecnólogo — UNESA, 2022 (trancado, 3º período)</p></div>
+    <div class="card au d1"><h3>Teatro</h3><p>Licenciatura Plena — UNESA, 2010</p></div>
+    <div class="card au d2"><h3>Interpretação Cênica</h3><p>Tecnólogo — UNESA, 2008 | Técnico — SATED, 2003</p></div>
+  </div>
+  <br>
+  <h3 class="au">Certificações e Cursos Complementares</h3><br>
+  <div class="grid3">
+    <div class="card au"><h3>Inteligência Artificial</h3><p>Estudos autodidatas e cursos livres em IA generativa aplicada à educação, criação de conteúdo e produtividade</p></div>
+    <div class="card au d1"><h3>Psicologia Junguiana, Arte e o Imaginário</h3><p>Especialização — PUC/RJ, 2013 (interrompida na fase de monografia)</p></div>
+    <div class="card au d2"><h3>Fundamentos para Análise de Dados</h3><p>Microsoft e LinkedIn Learning, 2024</p></div>
+  </div>
+</section>
+
+<section id="habilidades">
+  <div class="gl"></div>
+  <h2 class="au">Habilidades e <span class="gt">Ferramentas</span></h2>
+  <div class="grid2">
+    <div class="card au">
+      <h3>Soft Skills</h3>
+      <p>Lifelong learner; comunicação interpessoal; trabalho em equipe; dedicação; direção e preparação de atores; noções de canto e instrumentos musicais (percussão e violão); esgrima artística e técnicas de ação cênica (dublê); cursos livres em dublagem; storytelling; copywriting; oratória; liderança de equipe; contato com clientes; treinamento e capacitação; interesse e estudo contínuo em Inteligência Artificial.</p>
+    </div>
+    <div class="card au d1">
+      <h3>Ferramentas e Tecnologias</h3>
+      <p>Canva (design gráfico e materiais pedagógicos); Pacote Office (Word, Excel, PowerPoint); Power BI (nível iniciante); Google Workspace (Forms, Drive, Meet, Classroom); Zoom; GoToMeeting; Trello; Slack; ferramentas de IA generativa aplicadas à produção de conteúdo e apoio pedagógico.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pessoal">
+  <div class="gl"></div>
+  <h2 class="au">Informações <span class="gt">Pessoais</span></h2>
+  <div class="card au">
+    <p>Nacionalidade: brasileira | Estado civil: casado, dois filhos | Data de nascimento: 06 de julho de 1985 | Interesses: fotografia, edição de imagens, design gráfico e Inteligência Artificial.</p>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="gl"></div>
+  <h2 class="au">Contato</h2>
+  <div class="contact-grid">
+    <div class="contact-card au"><div class="ct-lbl">E-mail</div><div class="ct-val"><a href="mailto:brunomacedo.bm@gmail.com">brunomacedo.bm@gmail.com</a></div></div>
+    <div class="contact-card au d1"><div class="ct-lbl">Telefone</div><div class="ct-val">(21) 99665-1373</div></div>
+    <div class="contact-card au d2"><div class="ct-lbl">LinkedIn</div><div class="ct-val"><a href="https://www.linkedin.com/in/profbrunomacedo" target="_blank">www.linkedin.com/in/profbrunomacedo</a></div></div>
+    <div class="contact-card au d3"><div class="ct-lbl">Localização</div><div class="ct-val">Vargem Pequena, Rio de Janeiro, RJ</div></div>
+  </div>
+</section>
+
+</main>
+
+<button class="fs-btn" onclick="toggleFs()">Tela cheia</button>
+<button class="print-btn" onclick="doPrint()">Imprimir</button>
+
+<script>
+const prog = document.getElementById('prog');
+window.addEventListener('scroll', ()=>{
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  prog.style.width = pct + '%';
+});
+
+const sections = document.querySelectorAll('section[id]');
+const tocLinks = document.querySelectorAll('.toc a');
+const obs = new IntersectionObserver((entries)=> {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const id = e.target.id;
+      tocLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+},{rootMargin:'-40% 0px -40% 0px'});
+sections.forEach(s => obs.observe(s));
+
+tocLinks.forEach(a => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+const animObs = new IntersectionObserver((entries)=> {
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add('in-view');
+  });
+},{threshold:.15});
+document.querySelectorAll('.au, .as').forEach(el => animObs.observe(el));
+
+function toggleFs() {
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  }else{
+    document.exitFullscreen();
+  }
+}
+function doPrint() { window.print(); }
+</script>
+</body>
+</html>
